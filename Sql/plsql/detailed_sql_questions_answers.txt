@@ -1,0 +1,140 @@
+
+SQL Questions and Answers with Detailed Explanations and Corrections:
+
+1. **Question:**
+   Write a stored procedure to calculate the sum of two numbers.
+
+   **Answer:**
+   ```sql
+   DELIMITER $$
+
+   CREATE PROCEDURE calculate_sum(IN num1 INT, IN num2 INT, OUT sum INT)
+   BEGIN
+      SET sum = num1 + num2;
+   END $$
+
+   DELIMITER ;
+   ```
+
+   **Explanation:**
+   - `IN num1 INT` and `IN num2 INT` are input parameters that represent the two numbers to be added.
+   - `OUT sum INT` is an output parameter that will store the result of the sum.
+   - The procedure calculates the sum by adding `num1` and `num2`, and stores the result in the `sum` output parameter.
+   - The `DELIMITER $$` changes the statement delimiter to `$$` so that the procedure definition can include semicolons without terminating the statement prematurely.
+
+2. **Question:**
+   Create a function to calculate the square of a number.
+
+   **Answer:**
+   ```sql
+   DELIMITER $$
+
+   CREATE FUNCTION calculate_square(num INT) RETURNS INT
+   BEGIN
+      RETURN num * num;
+   END $$
+
+   DELIMITER ;
+   ```
+
+   **Explanation:**
+   - `num INT` is an input parameter representing the number whose square we want to calculate.
+   - The function returns an integer, which is the square of the input `num` (i.e., `num * num`).
+   - The `DELIMITER $$` is used here as well to define the function correctly.
+
+3. **Question:**
+   Write a stored procedure to find the maximum of two numbers.
+
+   **Answer:**
+   ```sql
+   DELIMITER $$
+
+   CREATE PROCEDURE find_max(IN num1 INT, IN num2 INT, OUT max_value INT)
+   BEGIN
+      IF num1 > num2 THEN
+         SET max_value = num1;
+      ELSE
+         SET max_value = num2;
+      END IF;
+   END $$
+
+   DELIMITER ;
+   ```
+
+   **Explanation:**
+   - `IN num1 INT` and `IN num2 INT` are input parameters for the two numbers to be compared.
+   - `OUT max_value INT` is an output parameter that will store the maximum value between `num1` and `num2`.
+   - The procedure uses an `IF` statement to check which number is larger and assigns the larger value to `max_value`.
+
+4. **Question:**
+   Create a stored procedure to reverse a string.
+
+   **Answer:**
+   ```sql
+   DELIMITER $$
+
+   CREATE PROCEDURE reverse_string(IN input_string VARCHAR(255), OUT reversed_string VARCHAR(255))
+   BEGIN
+      SET reversed_string = REVERSE(input_string);
+   END $$
+
+   DELIMITER ;
+   ```
+
+   **Explanation:**
+   - `IN input_string VARCHAR(255)` is an input parameter for the string to be reversed.
+   - `OUT reversed_string VARCHAR(255)` is an output parameter to store the reversed string.
+   - The procedure uses the `REVERSE` function to reverse the string and stores the result in `reversed_string`.
+
+5. **Question:**
+   Write a function to return the length of a string.
+
+   **Answer:**
+   ```sql
+   DELIMITER $$
+
+   CREATE FUNCTION get_string_length(input_string VARCHAR(255)) RETURNS INT
+   BEGIN
+      RETURN LENGTH(input_string);
+   END $$
+
+   DELIMITER ;
+   ```
+
+   **Explanation:**
+   - `input_string VARCHAR(255)` is the input parameter representing the string whose length we need to calculate.
+   - The function returns the length of the input string using the `LENGTH()` function, which counts the number of characters in the string.
+
+6. **Question:**
+   Create a stored procedure that accepts a table name as a parameter and retrieves all records from that table.
+
+   **Answer:**
+   ```sql
+   DELIMITER $$
+
+   CREATE PROCEDURE get_table_data(IN table_name VARCHAR(255))
+   BEGIN
+      SET @query = CONCAT('SELECT * FROM ', table_name);
+      PREPARE stmt FROM @query;
+      EXECUTE stmt;
+      DEALLOCATE PREPARE stmt;
+   END $$
+
+   DELIMITER ;
+   ```
+
+   **Explanation:**
+   - `IN table_name VARCHAR(255)` is the input parameter that takes the table name as a string.
+   - The procedure constructs a dynamic SQL query using `CONCAT` to build the `SELECT * FROM table_name` query.
+   - `PREPARE`, `EXECUTE`, and `DEALLOCATE` are used to execute the dynamic query.
+   - This approach allows the procedure to retrieve data from any table passed as a parameter.
+
+---
+
+**Note:** 
+In all these examples:
+- `IN` parameters are used to pass values into the procedure or function.
+- `OUT` parameters are used to return values from the procedure or function.
+- `DELIMITER $$` is used to change the delimiter so that semicolons can be used inside the body of the stored procedure or function without terminating the SQL statement prematurely.
+
+Each explanation focuses on how parameters are used within stored procedures and functions, and the corrected answers ensure that parameters are properly defined and used for the required logic.

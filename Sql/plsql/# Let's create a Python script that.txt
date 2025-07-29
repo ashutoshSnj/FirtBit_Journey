@@ -1,0 +1,55 @@
+# Let's create a Python script that writes the SQL queries and answers in a file format, with the necessary corrections, and adding comments for understanding the use of parameters in stored procedures and functions.
+
+sql_q_and_ans = """
+1. What is a stored procedure and how is it different from a function in SQL?
+   Answer:
+   A stored procedure is a set of SQL statements that can be executed as a unit. It can perform actions like modifying data or querying data.
+   A function, on the other hand, is also a set of SQL statements but typically returns a single value and is used for calculations or returning results.
+   - Stored Procedures: Can perform actions (e.g., modifying tables, inserting data).
+   - Functions: Return a value, cannot modify database state directly.
+
+2. How do you pass parameters to a stored procedure in SQL?
+   Answer:
+   To pass parameters to a stored procedure, you define them within the procedure declaration and pass the values when calling the procedure. For example:
+   
+   CREATE PROCEDURE procedure_name(IN param_name INT)
+   BEGIN
+       -- SQL statements using param_name
+   END;
+   
+   -- Here, param_name is the input parameter passed to the procedure.
+   
+3. How do you call a stored procedure in SQL with parameters?
+   Answer:
+   To call a stored procedure, you use the CALL statement with the arguments provided in the correct order. For example:
+   
+   CALL procedure_name(10);
+   
+   -- In this case, '10' is passed as the value for the input parameter.
+
+4. How do you create a function in SQL that returns a value?
+   Answer:
+   A function in SQL is created using the CREATE FUNCTION statement, and it must return a value. For example:
+   
+   CREATE FUNCTION function_name(param_name INT)
+   RETURNS INT
+   BEGIN
+       DECLARE result INT;
+       SET result = param_name * 2;
+       RETURN result;
+   END;
+   
+   -- In this example, the parameter 'param_name' is passed to the function, and the function returns a value (the result of 'param_name * 2').
+
+5. Can a function modify database tables or perform transactions in SQL?
+   Answer:
+   No, functions in SQL are designed to return a value and should not modify the database state (e.g., modifying tables, performing transactions). If you need to modify the database, you should use a stored procedure.
+"""
+
+# Save the content to a text file with corrections and comments
+file_path = "/mnt/data/sql_q_and_ans_corrected.txt"
+
+with open(file_path, "w") as file:
+    file.write(sql_q_and_ans)
+
+file_path

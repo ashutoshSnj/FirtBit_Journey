@@ -1,0 +1,476 @@
+     DDL Assignment 2
+Q1
+
+mysql> create table members
+    -> (member_id int,
+    -> member_name varchar(20),
+    -> member_address varchar(20),
+    -> acc_open_date date,
+    -> membership_type varchar(20),
+    -> fees_paid int,
+    -> max_book_allowed int,
+    -> penalty_amount decimal(7,2));
+
+mysql> create table books
+    -> (book_no int, book_name varchar(20),
+    -> author_name varchar(20),
+    -> cost decimal(7,2),
+    -> category char(10));
+
+mysql> create table issue
+    -> (lib_issue_id int,book_no int,
+    -> member_id int,
+    -> issue_id date,
+    -> return_date date);
+
+===============================================================================================================
+Q2
+mysql> desc members;
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| member_id        | int          | YES  |     | NULL    |       |
+| member_name      | varchar(20)  | YES  |     | NULL    |       |
+| member_address   | varchar(20)  | YES  |     | NULL    |       |
+| acc_open_date    | date         | YES  |     | NULL    |       |
+| membership_type  | varchar(20)  | YES  |     | NULL    |       |
+| fees_paid        | int          | YES  |     | NULL    |       |
+| max_book_allowed | int          | YES  |     | NULL    |       |
+| penalty_amount   | decimal(7,2) | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+
+mysql> desc books;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| book_no     | int          | YES  |     | NULL    |       |
+| book_name   | varchar(20)  | YES  |     | NULL    |       |
+| author_name | varchar(20)  | YES  |     | NULL    |       |
+| cost        | decimal(7,2) | YES  |     | NULL    |       |
+| category    | char(10)     | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+
+
+mysql> desc issue;
++--------------+------+------+-----+---------+-------+
+| Field        | Type | Null | Key | Default | Extra |
++--------------+------+------+-----+---------+-------+
+| lib_issue_id | int  | YES  |     | NULL    |       |
+| book_no      | int  | YES  |     | NULL    |       |
+| member_id    | int  | YES  |     | NULL    |       |
+| issue_id     | date | YES  |     | NULL    |       |
+| return_date  | date | YES  |     | NULL    |       |
++--------------+------+------+-----+---------+-------+
+===========================================================================================
+Q3 
+
+mysql> drop table members;
+
+===========================================================================================
+
+Q4 
+
+mysql> create table members
+    ->  (member_id int primary key,
+    ->  member_name varchar(20),
+    ->  member_address varchar(20),
+    -> acc_open_date date, membership_type varchar(20),
+    -> check (membership_type in ('Lifetime', 'half year', 'Quarter')),
+    -> fees_paid int,
+    -> max_book_allowed int,penalty_amount decimal(7,2));
+===========================================================================================
+Q5
+mysql> alter table members
+    -> modify member_id varchar(50);
+==========================================================================================
+Q6
+mysql> alter table issue
+    -> add column Reference char(30);
+============================================================================================
+Q7
+mysql> alter table issue
+    -> drop column Reference;
+===========================================================================================
+Q8
+mysql> alter table issue
+    -> rename to Lib_Issue;
+===========================================================================================
+Q9
+mysql> insert into members
+    -> values(1,"Richa Sharma","pune","2005-12-10","Lifetime",25000,5,50);
+mysql> insert into members values
+    -> (2,"Garima Sen","pune","2024-12-22","Annual",1000,3,null);
+=============================================================================================
+Q 10
+
+mysql> insert into members values
+    -> (3,"Ashutosh Shelke ","Sungamner","2024-11-22","lifetime",5000,3,23);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into members values
+    -> (4,"Shubham G","Nashik","2024-11-4","Annual",5000,5,23);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into members values
+    -> (5,"Prashant","Nashik","2024-12-4","Annual",3000,5,50);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into members values
+    -> (6,"Mahesh","Mumbai","2024-10-4","Quarterly",8000,2,60);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into members values
+    -> (7,"Shelke","Akole","2002-9-7","Lifetime",8000,2,60);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from members;
++-----------+------------------+----------------+---------------+-----------------+-----------+------------------+----------------+
+| member_id | member_name      | member_address | acc_open_date | membership_type | fees_paid | max_book_allowed | penalty_amount |
++-----------+------------------+----------------+---------------+-----------------+-----------+------------------+----------------+
+| 1         | Richa Sharma     | pune           | 2005-12-10    | Lifetime        |     25000 |                5 |          50.00 |
+| 2         | Garima Sen       | pune           | 2024-12-22    | Annual          |      1000 |                3 |           NULL |
+| 3         | Ashutosh Shelke  | Sungamner      | 2024-11-22    | lifetime        |      5000 |                3 |          23.00 |
+| 4         | Shubham G        | Nashik         | 2024-11-04    | Annual          |      5000 |                5 |          23.00 |
+| 5         | Prashant         | Nashik         | 2024-12-04    | Annual          |      3000 |                5 |          50.00 |
+| 6         | Mahesh           | Mumbai         | 2024-10-04    | Quarterly       |      8000 |                2 |          60.00 |
+| 7         | Shelke           | Akole          | 2002-09-07    | Lifetime        |      8000 |                2 |          60.00 |
++-----------+------------------+----------------+---------------+-----------------+-----------+------------------+----------------+
+==========================================================================================================================================
+
+Q 11
+mysql> alter table members
+    -> modify column member_name varchar(10);
+ERROR 1406 (22001): Data too long for column 'member_name' at row 1
+
+===================================================================================================================================
+
+Q13
+
+mysql> create table Member101
+    -> (member_id int primary key,
+    -> member_name varchar(20),
+    -> member_address varchar(20),
+    -> membership_type varchar(20) check (membership_type in ("Lifetime"," Annual",
+    ->  "Half Yearly", "Quarterly")),
+    -> fees_paid int,
+    -> max_book_allowed int,
+    -> penalty_amount decimal (7,2));
+
+=============================================================================================================================================
+
+Q 14
+
+mysql> alter table Member101
+    -> modify column max_book_allowed int check( max_book_allowed<100);
+
+mysql> alter table Member101
+    -> modify column penalty_amount decimal(7,2) check(penalty_amount<=1000);
+
+=============================================================================================================================
+ Q 15
+
+mysql> drop table books;
+Query OK, 0 rows affected (0.02 sec)
+
+================================================================================================================
+Q 16
+ 
+mysql> create table book(
+    -> book_no int primary key,
+    -> book_name varchar(20) not null,
+    -> author_name varchar(20),
+    -> cost decimal(7,2),
+    -> category varchar(20) check ( category in( "System","Fiction","database","RDBMS","other")));
+
+=============================================================================================================================
+Q 17
+
+
+mysql> insert into book
+    -> values (101,"Let us c","Denis Ritchie",450,"System");
+
+
+mysql> insert into book
+    -> (book_no,book_name,author_name,cost,category) values ( 102,"Oracle-Complete Ref","Lo
+ni",550,"Database");
+
+
+mysql> insert into book
+    -> values (103,"Mastering Sql ","Loni",250,"Database");
+
+mysql> insert into book
+    -> values (104,"Pl SQL-Ref","Scott Urman",750,"Database");
+
+mysql> select*from book
+    -> ;
++---------+---------------------+---------------+--------+----------+
+| book_no | book_name           | author_name   | cost   | category |
++---------+---------------------+---------------+--------+----------+
+|     101 | Let us c            | Denis Ritchie | 450.00 | System   |
+|     102 | Oracle-Complete Ref | Loni          | 550.00 | Database |
+|     103 | Mastering Sql       | Loni          | 250.00 | Database |
+|     104 | Pl SQL-Ref          | Scott Urman   | 750.00 | Database |
++---------+---------------------+---------------+--------+----------+
+==================================================================================================
+
+Q18
+
+mysql> insert into book
+    -> values (105,"Kali Julfe ","Ashutosh Shelke",550,"Others");
+
+mysql> insert into book
+    -> values (106,"Atank","A.Shelke",750,"Others");
+
+mysql> insert into book
+    -> values (108,"Wing","kalam",250,"Fiction");
+===================================================================================================
+
+Q 19
+mysql> select*from book;
++---------+---------------------+-----------------+--------+----------+
+| book_no | book_name           | author_name     | cost   | category |
++---------+---------------------+-----------------+--------+----------+
+|     101 | Let us c            | Denis Ritchie   | 450.00 | System   |
+|     102 | Oracle-Complete Ref | Loni            | 550.00 | Database |
+|     103 | Mastering Sql       | Loni            | 250.00 | Database |
+|     104 | Pl SQL-Ref          | Scott Urman     | 750.00 | Database |
+|     105 | Kali Julfe          | Ashutosh Shelke | 550.00 | Others   |
+|     106 | Atank               | A.Shelke        | 750.00 | Others   |
+|     107 | Gokuldham           | Jethalal        | 250.00 | Fiction  |
+|     108 | Wing                | Kalam           | 250.00 | Fiction  |
++---------+---------------------+-----------------+--------+----------+
+=====================================================================================================
+
+Q 20
+
+mysql> delete from book where book_no=105;
+
+mysql> alter table book
+    -> drop constraint book_chk_1;
+
+mysql> alter table book
+    -> add constraint  category check( category in("System","Fiction","database","rdbms","others","Science"));
+
+mysql> insert into book
+    -> values(105,"National Geographic","Adis Scott",1000,"Science");
+
+mysql> select*from book;
++---------+---------------------+---------------+---------+----------+
+| book_no | book_name           | author_name   | cost    | category |
++---------+---------------------+---------------+---------+----------+
+|     101 | Let us c            | Denis Ritchie |  450.00 | System   |
+|     102 | Oracle-Complete Ref | Loni          |  550.00 | Database |
+|     103 | Mastering Sql       | Loni          |  250.00 | Database |
+|     104 | Pl SQL-Ref          | Scott Urman   |  750.00 | Database |
+|     105 | National Geographic | Adis Scott    | 1000.00 | Science  |
+|     106 | Atank               | A.Shelke      |  750.00 | Others   |
+|     107 | Gokuldham           | Jethalal      |  250.00 | Fiction  |
+|     108 | Wing                | Kalam         |  250.00 | Fiction  |
++---------+---------------------+---------------+---------+----------+
+
+===================================================================================================
+
+Q21
+
+mysql> alter table  lib_issue rename to Issue;
+Query OK, 0 rows affected (0.05 sec)
+
+============================================================================================
+
+Q 22
+mysql> drop table Issue;
+Query OK, 0 rows affected (0.02 sec)
+
+=========================================================================================
+
+Q23
+
+mysql>  create table Issue (Lib_Issue_id int primary key,
+    -> Book_no int, Member_id int,
+    ->  issue_date date ,return_date date);
+
+mysql> alter table Issue
+    -> add foreign key (Book_no)
+    -> references book (book_no);
+
+mysql> alter table Issue
+    -> add foreign key (Member_id)
+    -> references  members( member_id);
+===================================================================================
+
+Q 24
+
+mysql> insert into Issue (Lib_Issue_id,Book_no,Member_id,issue_date) values
+    -> (7001,101,1,"10-Dec-06");
+
+
+mysql> insert into Issue (Book_no,Member_id,issue_date)
+    -> values (102,2,"25-Dec-06");
+
+mysql> insert into Issue (Book_no,Member_id,issue_date)
+    -> values (104,1,"15-Jan-06");
+
+mysql> insert into Issue (Book_no,Member_id,issue_date)
+    -> values (101,1,"4-Jul-04");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Issue (Book_no,Member_id,issue_date)
+    -> values (104,2,"15-Nov-06");
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> select  Lib_Issue_id, Book_no,Member_id,issue_date from Issue;
++--------------+---------+-----------+------------+
+| Lib_Issue_id | Book_no | Member_id | issue_date |
++--------------+---------+-----------+------------+
+|         7001 |     101 | 1         | 10-Dec-06  |
+|         7002 |     102 | 2         | 25-Dec-06  |
+|         7003 |     104 | 1         | 15-Jan-06  |
+|         7004 |     101 | 1         | 4-Jul-04   |
+|         7005 |     104 | 2         | 15-Nov-06  |
+|         7006 |     101 | 3         | 18-Feb-06  |
++--------------+---------+-----------+------------+
+6 rows in set (0.00 sec)
+
+===========================================================================================
+
+Q 25
+
+mysql> alter table Issue
+    -> modify column Lib_Issue_id int;
+
+mysql> alter table Issue
+    -> drop primary key;
+
+mysql> alter table Issue
+    -> drop foreign key issue_ibfk_1;
+
+mysql> alter table Is
+    -> drop foreign key issue_ibfk_2;
+===========================================================================================
+Q 26
+
+mysql> insert into issue values(7008,7856,78,"12-jun-06","2006-8-8");
+Query OK, 1 row affected (0.01 sec)
+
+=============================================================================================
+
+Q 27
+
+mysql> alter table issue
+    -> add primary key  (Lib_Issue_id);
+ERROR 1062 (23000): Duplicate entry '7006' for key 'issue.PRIMARY'
+
+===========================================================================================
+ Q 28
+
+mysql> delete from issue
+    -> where Book_no=102;
+
+mysql> alter table issue
+    -> add primary key(Lib_Issue_id);
+===========================================================================================
+
+Q 29
+mysql> delete from members
+    -> where member_id=1;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`fbsassignments`.`issue`, CONSTRAINT `issue_ibfk_2` FOREIGN KEY (`Member_id`) REFERENCES `members` (`member_id`))
+mysql>
+
+===========================================================================================
+Q 30
+
+mysql> select*from members;
++-----------+-----------------+----------------+---------------+-----------------+-----------+------------------+----------------+
+| member_id | member_name     | member_address | acc_open_date | membership_type | fees_paid | max_book_allowed | penalty_amount |
++-----------+-----------------+----------------+---------------+-----------------+-----------+------------------+----------------+
+| 1         | Richa Sharma    | pune           | 2005-12-10    | Lifetime        |     25000 |                5 |          50.00 |
+| 2         | Garima Sen      | pune           | 2024-12-22    | Annual          |      1000 |                3 |           NULL |
+| 3         | Ashutosh Shelke | Sungamner      | 2024-11-22    | lifetime        |      5000 |                3 |          23.00 |
+| 4         | Shubham G       | Nashik         | 2024-11-04    | Annual          |      5000 |                5 |          23.00 |
+| 5         | Prashant        | Nashik         | 2024-12-04    | Annual          |      3000 |                5 |          50.00 |
+| 6         | Mahesh          | Mumbai         | 2024-10-04    | Quarterly       |      8000 |                2 |          60.00 |
+| 7         | Shelke          | Akole          | 2002-09-07    | Lifetime        |      8000 |                2 |          60.00 |
++-----------+-----------------+----------------+---------------+-----------------+-----------+------------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from issue;
++--------------+---------+-----------+------------+-------------+
+| Lib_Issue_id | Book_no | Member_id | issue_date | return_date |
++--------------+---------+-----------+------------+-------------+
+|         7001 |     101 | 1         | 10-Dec-06  | NULL        |
+|         7002 |     102 | 2         | 25-Dec-06  | 2006-05-07  |
+|         7003 |     101 | 1         | 4-Jul-04   | NULL        |
+|         7004 |     104 | 2         | 15-Nov-06  | NULL        |
+|         7005 |     104 | 2         | 15-Nov-06  | NULL        |
+|         7006 |     101 | 3         | 18-Feb-06  | NULL        |
++--------------+---------+-----------+------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from book;
++---------+---------------------+---------------+---------+----------+
+| book_no | book_name           | author_name   | cost    | category |
++---------+---------------------+---------------+---------+----------+
+|     101 | Let us c            | Denis Ritchie |  450.00 | System   |
+|     102 | Oracle-Complete Ref | Loni          |  550.00 | Database |
+|     103 | Mastering Sql       | Loni          |  250.00 | Database |
+|     104 | Pl SQL-Ref          | Scott Urman   |  750.00 | Database |
+|     105 | National Geographic | Adis Scott    | 1000.00 | Science  |
+|     106 | Atank               | A.Shelke      |  750.00 | Others   |
+|     107 | Gokuldham           | Jethalal      |  250.00 | Fiction  |
+|     108 | Wing                | Kalam         |  250.00 | Fiction  |
++---------+---------------------+---------------+---------+----------+
+8 rows in set (0.00 sec)
+
+===========================================================================================
+
+Q 31
+
+
+mysql> update issue set return_date="19-Jul-06" where Lib_Issue_id=7004;
+
+
+mysql> update issue set return_date="30-Nov-06" where Lib_Issue_id=7005;
+
+===========================================================================================
+Q 32
+
+
+mysql> delete from issue where Member_id=1
+    -> && str_to_date( issue_date, "%d-%b-%y") < "2006-12-10";
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+===========================================================================================
+Q 33
+mysql> delete from book
+    -> where category NOT IN ('RDBMS', 'Database');
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`fbsassignments`.`issue`, CONSTRAINT `issue_ibfk_1` FOREIGN KEY (`Book_no`) REFERENCES `book` (`book_no`))
+
+mysql> alter table issue
+    -> drop foreign key issue_ibfk_1;
+
+mysql> delete from book
+    -> where category NOT IN ('RDBMS', 'Database');
+Query OK, 5 rows affected (0.01 sec)
+
+
+mysql> select*from book;
++---------+---------------------+-------------+--------+----------+
+| book_no | book_name           | author_name | cost   | category |
++---------+---------------------+-------------+--------+----------+
+|     102 | Oracle-Complete Ref | Loni        | 550.00 | Database |
+|     103 | Mastering Sql       | Loni        | 250.00 | Database |
+|     104 | Pl SQL-Ref          | Scott Urman | 750.00 | Database |
++---------+---------------------+-------------+--------+----------+
+3 rows in set (0.00 sec)
+
+===========================================================================================
+Q 34
+mysql> drop table members;
+
+===========================================================================================================
+
+Q 35
+
+mysql> drop table book;
+===========================================================================================

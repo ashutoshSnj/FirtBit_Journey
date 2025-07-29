@@ -1,0 +1,146 @@
+DML Assignment 2
+
+Q1 
+
+mysql> create table Employees ( EMPLOYEE_ID int ,FIRST_NAME varchar(20),LAST
+_NAME varchar(20),EMAIL varchar(20) unique ,PHONE_NUMBER int unique,
+    -> Hire_date date,job_id varchar(20),salary double(7,2), COMMISSION_PCT int,
+    -> Manager_id int,Department_id int);
+
+
+
+mysql> insert into Employees values (100,"Steven","king","Sking","551.123.4567",
+    -> "1987-06-17","AD_PRES",24000.00,0.0,200,10);
+
+mysql> insert into Employees (EMPLOYEE_ID, FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER, Hire_date,job_id,salary, Manager_id, Department_id)
+    -> values ( 101,"Neena","Kochhar","Nkochhar","515.123.4568",
+    -> "1987-06-18","AD_Vp",17000.00,200,10);
+
+mysql> insert into Employees values
+    -> (102,"Lex","De Haan","LDEHAAN","515.123.4569","1987-06-19","AD_VP",
+    -> 17000.0,0.0,200,10);
+
+
+mysql> insert into Employees values
+    -> (103,"Alexander","Hunold","Ahunold","590.423.4567","1987-06-20",
+    -> "IT_Prog",6000.00,0.00,103,60);
+
+
+
+mysql> insert into Employees values
+    -> (104,"Bruce","Ernst","Bernst","590.423.4568","1987-06-21",
+    -> "IT_Prog",4800.00,0.00,103,60);
+
+
+mysql> insert into Employees values
+    -> (105,"Devide","Austin","Drustin","590.423.4569","1987-06-22",
+    -> "IT_Prog",4800.00,0.00,103,60);
+
+
+mysql> insert into Employees values
+    -> (106,"Valli","Pataballa","VPATABAL","590.423.4560","1987-06-23",
+    -> "IT_Prog",4800.00,0.00,103,60);
+
+
+mysql> insert into Employees values
+    -> (107,"Diana","Lorentz","Dlorentz","590.423.5567","1987-06-24",
+    -> "IT_Prog",4200.00,0.00,115,80);
+
+
+mysql> insert into Employees values
+    -> (108,"Nancy","Greenberg","Ngreenbe","515.124.4569","1987-06-25",
+    -> "SA_MAN",12000.00,0.00,145,80);
+
+
+mysql> insert into Employees values
+    -> (109,"Daniel","Faviet","Dfaviet","515.124.4169","1987-06-26",
+    -> "SA_MAN",9000.00,0.00,145,80);
+mysql> select * from Employees;
++-------------+------------+-----------+----------+--------------+------------+---------+----------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | EMAIL    | PHONE_NUMBER | Hire_date  | job_id  | salary   | COMMISSION_PCT | Manager_id | Department_id |
++-------------+------------+-----------+----------+--------------+------------+---------+----------+----------------+------------+---------------+
+|         100 | Steven     | king      | Sking    | 551.123.4567 | 1987-06-17 | AD_PRES | 24000.00 |              0 |        200 |            10 |
+|         101 | Neena      | Kochhar   | Nkochhar | 515.123.4568 | 1987-06-18 | AD_Vp   | 17000.00 |              0 |        200 |            10 |
+|         102 | Lex        | De Haan   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   | 17000.00 |              0 |        200 |            10 |
+|         103 | Alexander  | Hunold    | Ahunold  | 590.423.4567 | 1987-06-20 | IT_Prog |  6000.00 |              0 |        103 |            60 |
+|         104 | Bruce      | Ernst     | Bernst   | 590.423.4568 | 1987-06-21 | IT_Prog |  4800.00 |              0 |        103 |            60 |
+|         105 | Devide     | Austin    | Drustin  | 590.423.4569 | 1987-06-22 | IT_Prog |  4800.00 |              0 |        103 |            60 |
+|         106 | Valli      | Pataballa | VPATABAL | 590.423.4560 | 1987-06-23 | IT_Prog |  4800.00 |              0 |        103 |            60 |
+|         107 | Diana      | Lorentz   | Dlorentz | 590.423.5567 | 1987-06-24 | IT_Prog |  4200.00 |              0 |        115 |            80 |
+|         108 | Nancy      | Greenberg | Ngreenbe | 515.124.4569 | 1987-06-25 | SA_MAN  | 12000.00 |              0 |        145 |            80 |
+|         109 | Daniel     | Faviet    | Dfaviet  | 515.124.4169 | 1987-06-26 | SA_MAN  |  9000.00 |              0 |        145 |            80 |
++-------------+------------+-----------+----------+--------------+------------+---------+----------+----------------+------------+---------------+
+10 rows in set (0.00 sec)
+
+==========================================================================================================================================================================
+
+Q 2
+
+mysql> create table Department
+    -> (department_id int ,department_name varchar(50),manager_id int,locati
+on_id int);
+
+
+mysql> insert into Department values
+    -> (10,"Administration",200,1200),
+    -> (20,"Marketing",201,1800),
+    -> (30,"Purchasing",114,1700);
+
+mysql> insert into Department values
+    -> (40,"Human Resources",203,2400),
+    -> (50,"Shipping",121,1500),
+    -> (60,"It",103,1400),
+    -> (70,"public relations",204,2700),
+    -> (80,"Sales",150,2500);
+
+mysql> select*from Department;
++---------------+------------------+------------+-------------+
+| department_id | department_name  | manager_id | location_id |
++---------------+------------------+------------+-------------+
+|            10 | Administration   |        200 |        1200 |
+|            20 | Marketing        |        201 |        1800 |
+|            30 | Purchasing       |        114 |        1700 |
+|            40 | Human Resources  |        203 |        2400 |
+|            50 | Shipping         |        121 |        1500 |
+|            60 | It               |        103 |        1400 |
+|            70 | public relations |        204 |        2700 |
+|            80 | Sales            |        150 |        2500 |
++---------------+------------------+------------+-------------+
+
+===========================================================================================
+
+Q3
+
+mysql> create table Jobs
+    -> (job_id int primary key
+    -> ,job_title varchar(30),min_salary int,max_salary int );
+Query OK, 0 rows affected (0.03 sec)
+
+=================================================================================================
+
+Q 4
+
+mysql> update employees set EMPLOYEE_ID=EMPLOYEE_ID*1.10;
+
+====================================================================================================
+
+Q 5
+mysql> update employees set  EMAIL="not available" where  Department_id=80 and COMMISSION_PCT<20;
+
+===========================================================================================
+
+Q6
+mysql> alter table employees
+    -> add foreign key ( Department_id)
+    -> references department (department_id);
+
+mysql> update employees set EMAIL="not available" where Department_id in
+    -> (select department_id from department where department_name="Purchasing");
+
+===========================================================================================================
+ Q 7
+
+mysql> ;pdate employees set EMAIL="not available" ,  commission_pct = 0.10
+
+=================================================================================================================
+

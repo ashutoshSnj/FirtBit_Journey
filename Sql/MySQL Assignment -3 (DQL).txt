@@ -1,0 +1,140 @@
+                                         MySQL Assignment -3 (DQL) 
+MySQL Assignment -3 (Basic Select)
+
+Q 1
+select first_name "First Name" , last_name "Last Name" from Employees ;
+
+==================================================================================================================================
+ Q 2
+
+mysql> select distinct  Department_id from employees;
++---------------+
+| Department_id |
++---------------+
+|            10 |
+|            60 |
+|            80 |
++---------------+
+
+=============================================================================================
+
+Q 3
+mysql> select * from employees order by   FIRST_NAME desc;
+
+=============================================================================================
+
+Q 4
+
+mysql> select  FIRST_NAME , LAST_NAME ,salary, salary*0.15 "pf" from employees;
++------------+-----------+----------+---------+
+| FIRST_NAME | LAST_NAME | salary   | pf      |
++------------+-----------+----------+---------+
+| Steven     | king      | 24000.00 | 3600.00 |
+| Neena      | Kochhar   | 17000.00 | 2550.00 |
+| Lex        | De Haan   | 17000.00 | 2550.00 |
+| Alexander  | Hunold    |  6000.00 |  900.00 |
+| Bruce      | Ernst     |  4800.00 |  720.00 |
+| Devide     | Austin    |  4800.00 |  720.00 |
+| Valli      | Pataballa |  4800.00 |  720.00 |
+| Diana      | Lorentz   |  4200.00 |  630.00 |
+| Nancy      | Greenberg | 12000.00 | 1800.00 |
+| Daniel     | Faviet    |  9000.00 | 1350.00 |
++------------+-----------+----------+---------+
+
+===========================================================================================
+Q 5
+
+mysql> select EMPLOYEE_ID,FIRST_NAME ,LAST_NAME,salary from employees
+    -> order by salary;
+===========================================================================================
+
+Q 6
+mysql> select sum(salary)"Total Salary" from employees;
++--------------+
+| Total Salary |
++--------------+
+|    103600.00 |
++--------------+
+
+===========================================================================================
+Q 7
+
+mysql> select max(salary) as maxsal,min(salary) as minsal from employees;
++----------+---------+
+| maxsal   | minsal  |
++----------+---------+
+| 24000.00 | 4200.00 |
++----------+---------+
+
+===========================================================================================
+Q 8
+
+mysql> select avg(salary) as avgsalary,count(*) as total_count from employees;
++--------------+-------------+
+| avgsalary    | total_count |
++--------------+-------------+
+| 10360.000000 |          10 |
++--------------+-------------+
+1 row in set (0.00 sec)
+===========================================================================================
+Q 9
+
+
+mysql> select count(*) "total Employee" from employees;
++----------------+
+| total Employee |
++----------------+
+|             10 |
++----------------+
+===========================================================================================
+
+Q 10
+mysql> select count(job_id) as no_job from employees;
++--------+
+| no_job |
++--------+
+|     10 |
++--------+
+
+===========================================================================================
+
+Q 11
+
+mysql> select * from employees limit 10;
+
+===========================================================================================
+Q 12
+
+mysql> select FIRST_NAME ,LAST_NAME,salary from employees where salary not i
+n(10000,15000);
+
+===========================================================================================
+
+Q 13
+mysql> select  FIRST_NAME, LAST_NAME , Department_id from employees where Department_id in(30,100) order by Department_id ;
+
+===========================================================================================
+
+Q 14
+
+mysql> select  FIRST_NAME, LAST_NAME ,salary  from employees where salary not between (10000 and 15000) and Department_id in(30,100);
+
+===========================================================================================
+
+Q 15
+
+mysql> select FIRST_NAME , LAST_NAME,Hire_date from employees where Hire_date>1987;
+
+===========================================================================================
+
+Q 16
+mysql> select  FIRST_NAME from employees where  FIRST_NAME like "%b%" and  "%c";
+
+===========================================================================================
+Q 17
+mysql> select  LAST_NAME,job_id,salary from employees where  Department_id in(
+    -> select department_id from department where  department_name in("Programmer", "Shipping Clerk")) and salary not in(4500,10000,15000);
+
+===========================================================================================
+Q 18
+
