@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  this is responce
+ <!--   <p th:text="${What}"></p>-->
+  <table>
+  <tr th:each="ref:${What}">
+    <td th:text="${ref.id}"></td>
+    <td th:text="${ref.name}"></td>
+    <td th:text="${ref.gread}"></td>  <!-- Fixed 'read' to 'gread' -->
+    <td th:text="${ref.stream}"></td>  <!-- Added missing field -->
+  </tr>
+</table>
+  
+</body>
+</html>

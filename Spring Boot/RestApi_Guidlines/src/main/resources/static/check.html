@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Authentication Demo</title>
+</head>
+<body>
+    <h2>JWT Authentication Example</h2>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username">
+    <label>Name:</label>
+    <input type="text" id="name">
+    <label>ID:</label>
+    <input type="text" id="id">
+    <button onclick="login()">Login</button>
+
+    <h3>Token:</h3>
+    <textarea id="jwtToken" rows="5" cols="50" readonly></textarea>
+    <br>
+    <button onclick="sendRequest()">Send API Request</button>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        function login() {
+            const id = document.getElementById("id").value;
+            const name = document.getElementById("name").value;
+
+            if (!id || !name) {
+                alert("Please enter both ID and Name!");
+                return;
+            }
+
+            const student = { name: name, id: id };
+
+            fetch("http://localhost:8080/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(student)
+            })
+            .then(response => {
+                // 🔴 Extract token from response headers instead of body
+                const token = response.headers.get("Authorization");
+                if (token && token.startsWith("Bearer ")) {
+                    const jwtToken = token.split("Bearer ")[1]; // Extract token part
+                    localStorage.setItem("jwtToken", jwtToken);
+                    document.getElementById("jwtToken").value = jwtToken;
+                    alert("Login successful! Token received.");
+                } else {
+                    alert("Login failed. No token received.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        function sendRequest() {
+            const token = localStorage.getItem("jwtToken");
+
+            if (!token) {
+                alert("No token found. Please log in.");
+                return;
+            }
+
+            fetch("http://localhost:8080/store", { // 🔴 Ensure correct backend URL
+                method: "POST",
+                headers: { "Authorization": "Bearer " + token }
+            })
+            .then(response => response.text())
+            .then(data => alert("Response: " + data))
+            .catch(error => console.error("Error:", error));
+        }
+
+        function logout() {
+            localStorage.removeItem("jwtToken");
+            document.getElementById("jwtToken").value = "";
+            alert("Logged out. Token removed.");
+        }
+    </script>
+</body>
+</html>

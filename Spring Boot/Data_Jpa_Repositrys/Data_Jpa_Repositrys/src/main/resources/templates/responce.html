@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  this is responce
+ <!--   <p th:text="${What}"></p>
+ int id;
+	String name;
+	String gread;
+	String stream; -->
+  <table>
+  <tr th:each="ref:${what}">
+  <td th:text="${ref.id}"></td>
+  <td th:text="${ref.name}"></td>
+<td th:text="${ref.read}"></td>
+  
+  </table> 
+</body>
+</html>
