@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete HTML Website</title>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to My Simple HTML Website</h1>
+        <p>This website showcases basic HTML tags in action.</p>
+    </header>
+
+    <!-- Navigation Links -->
+    <nav>
+        <a href="#about">About</a> |
+        <a href="#features">Features</a> |
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About This Website</h2>
+            <p>This website demonstrates the use of various HTML tags such as headings, links, images, forms, tables, and lists.</p>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2>Features</h2>
+
+            <!-- Image Tag -->
+            <img src="https://via.placeholder.com/400" alt="Sample Image" width="400" height="200">
+
+            <!-- Table -->
+            <h3>Sample Table</h3>
+            <table border="1">
+                <tr>
+                    <th>Feature</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Headings</td>
+                    <td>Various heading levels (H1 to H6).</td>
+                </tr>
+                <tr>
+                    <td>Forms</td>
+                    <td>Includes input fields and dropdown options.</td>
+                </tr>
+                <tr>
+                    <td>Lists</td>
+                    <td>Ordered and unordered lists for organization.</td>
+                </tr>
+            </table>
+
+            <!-- Ordered and Unordered Lists -->
+            <h3>Lists</h3>
+            <p>Ordered List:</p>
+            <ol>
+                <li>HTML Basics</li>
+                <li>HTML Tags</li>
+                <li>HTML Structure</li>
+            </ol>
+
+            <p>Unordered List:</p>
+            <ul>
+                <li>Headings</li>
+                <li>Links</li>
+                <li>Images</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <!-- Form -->
+            <form action="#">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age"><br><br>
+
+                <label for="city">City:</label><br>
+                <input list="cities" id="city" name="city">
+                <datalist id="cities">
+                    <option value="New York">
+                    <option value="London">
+                    <option value="Tokyo">
+                    <option value="Paris">
+                </datalist><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

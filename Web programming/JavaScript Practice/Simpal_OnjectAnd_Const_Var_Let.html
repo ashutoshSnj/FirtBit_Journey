@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Declaring the document as an HTML5 document -->
+    <meta charset="UTF-8"> <!-- Ensures correct text encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>JavaScript Example</title>
+</head>
+<body>
+
+    <h1>Open Console (F12) to See Output</h1> <!-- Instruction for users -->
+
+    <script>
+        // 1️⃣ Defining a 'person' object using 'const'
+        const person = {
+            firstName: "John",  // Property: First name of the person
+            lastName: "Doe",     // Property: Last name of the person
+            fullName: function() { 
+                return this.firstName + " " + this.lastName; // Method: Returns full name
+            }
+        };
+
+        // 2️⃣ Logging the full name to the console
+        console.log("Full Name:", person.fullName()); // Output: "John Doe"
+
+        // 3️⃣ Using 'let' in a loop (Block-scoped variable)
+        console.log("\nCounting from 1 to 5 using let:");
+        for (let i = 1; i <= 5; i++) {
+            console.log(i); // Prints 1, 2, 3, 4, 5
+        }
+        // console.log(i); // ❌ ERROR: 'i' is not accessible here (block-scoped)
+
+        // 4️⃣ Using 'var' in a loop (Function-scoped variable)
+        console.log("\nCounting from 1 to 5 using var:");
+        for (var j = 1; j <= 5; j++) {
+            console.log(j); // Prints 1, 2, 3, 4, 5
+        }
+        // 5️⃣ Demonstrating 'var' scope (It is accessible outside the loop)
+        console.log("Value of j after loop:", j); // Output: 6 (var is function-scoped, not block-scoped)
+
+        // 6️⃣ Modifying the 'person' object property
+        person.firstName = "Michael"; // Changing first name from 'John' to 'Michael'
+        console.log("\nModified Full Name:", person.fullName()); // Output: "Michael Doe"
+
+    </script>
+
+</body>
+</html>

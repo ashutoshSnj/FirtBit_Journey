@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Animation</title>
+    <script src="/JQuery.js"></script>
+    <style>
+        img {
+            position: relative;
+            width: 200px;
+            height: auto;
+        }
+    </style>
+    <script src="/JQuery.js"></script>
+    <script>
+        $(document).ready(function(){
+    
+            $(".btn1").click(function(){
+                $("p").show();
+            });
+            $(".btn2").click(function(){
+                $("p").hide();
+            });
+
+
+            $(".btn3").click(function(){
+                $("img").animate({left: '250px'}, function() {
+                    $("img").animate({left: '0px'});
+                });
+            });
+
+        
+            $(".btn4").click(function(){
+                $("#p1").css("color", "red").slideUp(20000).slideDown(20000);
+            });
+
+            
+            $(".stop").click(function(){
+                $("#p1").stop(); 
+            });
+        });
+    </script>
+</head>
+<body>
+    <p id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde distinctio repellendus <br> aliquid harum perspiciatis possimus nobis aperiam quia libero itaque?</p>
+    <p id="p2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit omnis deleniti, iusto eaque,<br> voluptates laborum laudantium consequatur saepe qui sit.</p>
+    <img src="bitcoin.jpg" alt="Picture">
+    <br><br>
+
+
+    <button class="btn1">SHOW</button>
+    <button class="btn2">HIDE</button>
+    <button class="btn3">Animate</button>
+    <button class="btn4">Slideup</button>
+    <button class="stop">Stop Animation</button>
+</body>
+</html>

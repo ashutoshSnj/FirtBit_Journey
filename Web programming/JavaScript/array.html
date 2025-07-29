@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    arr=[1,9,4,8,63,5]
+    function reverse(){
+        j=arr.length-1
+       for(i=0;i<arr.length/2;i++){
+          temp=arr[i]
+          arr[i]=arr[j]
+          arr[j]=temp
+          j--
+       }
+       console.log(arr);
+    }
+
+    function max(){
+         temp=arr[0]
+        for( i=1;i<arr.length;i++){
+            if(arr[i]>temp){
+                temp=arr[i]
+            }
+    }
+       console.log(temp);
+    }
+    function min(){
+         temp=arr[0]
+        for( i=1;i<arr.length;i++){
+            if(arr[i]<temp){
+                temp=arr[i]
+            }
+    }
+       console.log(temp);
+    }
+    function sort(){
+        for(i=0;i<arr.length;i++){
+            for(j=i+1; j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    temp=arr[i]
+                    arr[i]=arr[j]
+                    arr[j]=temp
+                }
+            }
+    }
+    console.log(arr)
+}
+function even(){
+    for(i=0;i<arr.length;i++){
+        if(arr[i]%2==0){
+            console.log(arr[i])
+        }
+}
+}
+function odd(){
+    for(i=0;i<arr.length;i++){
+        if(arr[i]%2!=0){
+            console.log(arr[i])
+        }
+}
+} 
+</script>
+<body>
+    <button onclick="reverse()"> reverse array </button> <br><br>
+    <button onclick="max()">  max no </button> <br> <br>
+    <button onclick="min()"> min no</button> <br> <br>
+    <button onclick="sort()"> Sort</button> <br> <br>
+    <button onclick="even()">Even no</button> <br> <br>
+    <button onclick="odd()">odd no</button> <br> <br>
+</body>
+</html>
