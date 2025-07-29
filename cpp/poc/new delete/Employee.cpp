@@ -1,0 +1,198 @@
+using namespace std;
+#include<iostream>
+#include<string.h>
+
+class Employee{
+	protected:
+	int id;
+	char name[20];
+   double salary;
+   public:
+   virtual void display(){
+   	cout<<"ID = "<<this->id<<endl;;
+	cout<<"Name = "<<this->name<<endl;
+	cout<<"salary = "<<this->salary<<endl;
+     
+   }
+   void setid(int a){
+		this->id=a;
+	}
+	void setname(char* ass){
+		strcpy(this->name,ass);
+	}
+	void setsalary(double a){
+		
+        this->salary=a;
+	}
+	int getid(){
+		return this->id;
+	}
+	  char* getname(){
+	  	return this->name;
+	  }
+	  	double getsalary(){
+		return this->salary;
+	}
+    virtual double cal_salary(){
+		return this->salary;
+	}
+	
+	Employee(){
+	//	cout<<"Employee Defoult counstructor call "<<endl;
+	   this->id=0;
+	   strcpy(this->name,"not given");	
+	   this->salary=0;
+	}
+	Employee(int id,char*name,double salary){
+	//	cout<<"Employee parametrize counstructer call"<<endl;
+	   this->id=id;
+	   strcpy(this->name,name);	
+	   this->salary=salary;
+	}
+};// Employ End here
+class Salsemanager:public Employee{
+	// this is frist step is a relationship
+	double incentive;
+	int target;
+	public:
+	void setincentive(double a){
+		this->incentive=a;
+	}
+		void settarget(int a){
+		this->target=a;
+	}
+	double getincentive(){
+		return this->incentive;
+	}
+	int gettarget(){
+		return this->target;
+	}
+	Salsemanager():Employee(){
+		
+
+		this->incentive=0.00;
+		this->target=00;
+	}
+   Salsemanager(int id,char*name,double salary,double incentive ,int target):Employee(id,name,salary){
+   	                                           
+	   this->incentive=incentive;
+	   this->target=target;
+	}	
+	void display(){
+   	 Employee::display();
+   	 
+     cout<<"\n incentiv = "<<this->incentive;
+     cout<<"\n target = "<<this->target;
+   }
+   	double cal_salary(){
+		return this->salary+this->incentive;
+	}
+};// salse manager end here
+class Hr:public Employee{
+	double  commission;
+	public:
+ void setcommission(double a){
+		this->commission=a;	
+	}
+ double getcommission(){
+		return this->commission;
+	}
+	Hr():Employee(){
+		
+		this->commission=0;
+	}
+	Hr(int id,char* name,double salary,double commission):Employee(id,name,salary){
+		this->commission=commission;
+	}
+	void display(){
+		Employee::display();
+	cout<<"\n commission = "<<this->commission<<endl;
+	}
+	double cal_salary(){
+		return this->salary+this->commission;
+	}
+	
+};// Hr ends here
+ class Admin:public Employee{
+ 	double allowance;
+ 	public:
+ 	void setallowance(double a){
+ 		this->allowance=a;
+	 }
+	 double getallowance(){
+	 	return this->allowance;
+	 }
+	 Admin():Employee(){
+	 
+	 	this->allowance=0;
+	 }
+	 Admin(int id,char* name,double salary,double allowance):Employee(id,name,salary){
+	
+	 	this->allowance=allowance;
+	 }
+	 void display(){
+	 	Employee::display();
+	cout<<"\n allowance = "<<this->allowance<<endl;	
+	 }
+	 double cal_salary(){
+		return this->salary+this->allowance;
+	}
+ }; //Admin end here
+int main(){
+Employee*ep;
+ 
+ ep = new Employee (11,"Ashutosh",200000);
+//ep->display();
+delete ep;
+    Salsemanager* s = new Salsemanager [5];
+              s[0].setid(78);
+              s[0].setname("ashutosh");
+              s[0].setsalary(956596);
+              s[0].setincentive(784521);
+              s[0].settarget(7);
+              
+             cout<<s[0].getid()<<endl;
+             cout<<s[0].getname()<<endl;
+              cout<<s[0].getsalary()<<endl;
+              cout<<s[0].getincentive()<<endl;
+              cout<<s[0].gettarget()<<endl;
+              cout<<"Enter the salsmanager count = "<<endl;
+              int size;
+              cin>>size;
+              int id;
+              char name[78];
+              double salary;
+              double incentive;
+              int target;
+              
+              
+              for(int i=1;i<=size;i++){
+              	cout<<"Enter the id = ";
+              	cin>>id;
+              	cout<<"Enter the name = ";
+              	cin.ignore();
+              	cin.getline(name,52);
+              	
+              	cout<<"Enter the salary = ";
+              	cin>>salary;
+              	cout<<"Enter the incentive = ";
+              	cin>>incentive;
+              	cout<<"Enter the target = ";
+              	cin>>target;
+              	 s[i].setid(id);
+              s[i].setname(name);
+              s[i].setsalary(salary);
+              s[i].setincentive(incentive);
+              s[i].settarget(target);
+            	 
+			  }
+			  for(int i=0;i<size+1;i++){
+			  	s[i].display();
+			  }
+			  
+              
+    
+    
+
+
+}
