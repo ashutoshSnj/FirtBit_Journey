@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.my.api","c":"mathematicalopration","l":"div(int, int)","u":"div(int,int)"},{"p":"com.my.api","c":"mathematicalopration","l":"mathematicalopration()","u":"%3Cinit%3E()"},{"p":"com.my.api","c":"mathematicalopration","l":"sum(int, int)","u":"sum(int,int)"}];updateSearchResults();
