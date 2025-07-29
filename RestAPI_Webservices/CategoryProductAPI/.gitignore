@@ -1,0 +1,46 @@
+# Ignore build directories (Maven/Gradle)
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Ignore build directories for other tools (NetBeans/VS Code)
+build/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# IDE specific files (STS, IntelliJ IDEA, VS Code, NetBeans)
+### STS (Spring Tool Suite) ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Other unwanted files
+*.log
+*.swp
+.DS_Store
+*.bak
+
+# Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
